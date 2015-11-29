@@ -229,8 +229,8 @@ bool cVNSIDemux::GetSignalStatus(PVR_SIGNAL_STATUS &qualityinfo)
   if (m_Quality.fe_name.empty())
     return true;
 
-  strncpy(qualityinfo.strAdapterName, m_Quality.fe_name.c_str(), sizeof(qualityinfo.strAdapterName));
-  strncpy(qualityinfo.strAdapterStatus, m_Quality.fe_status.c_str(), sizeof(qualityinfo.strAdapterStatus));
+  strncpy(qualityinfo.strAdapterName, m_Quality.fe_name.c_str(), sizeof(qualityinfo.strAdapterName) - 1);
+  strncpy(qualityinfo.strAdapterStatus, m_Quality.fe_status.c_str(), sizeof(qualityinfo.strAdapterStatus) - 1);
   qualityinfo.iSignal = (uint16_t)m_Quality.fe_signal;
   qualityinfo.iSNR = (uint16_t)m_Quality.fe_snr;
   qualityinfo.iBER = (uint32_t)m_Quality.fe_ber;
